@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>First</title>
+    <style>
+      span{color:red}
+      body
+      {
+          color:black;
+          font-size: 18px;
+          padding: 5px;
+          margin: 10px;
+          font-weight: bold;
+      }
+      button{
+          width:200px;
+          padding: 10px;
+          margin: 10px;
+          text-align: center;
+          background-color: rgb(16, 113, 187);
+          color:white;
+      }
+    </style>
+  </head>
+
+  <body bgcolor="white">
+    <form  name="Reg" action=" " method="post"  onsubmit="return validate()">
+    <div class"row">
+      <h1 align="center"><b>Registration for university inter college cultural fest</b></</h1>
+    </div>
+
+    <section>
+      <h3><b><u>Login Details</u></b></h3>
+      UID:<span>*</span> &nbsp; <input type="text" name="uid" required><br><br>
+      Password:<span>*</span> &nbsp; <input type="password" name="pass" required><br><br>
+    </section>
+
+    <section>
+      <h3><b><u>Personal details</u></b></h3>
+          Full Name:<span>*</span> &nbsp; <input type="text" name="sname" id="Name" required><br><br>
+          Phone Number : <span>*</span> &nbsp; <input type="text" name="phone" required><br><br>
+          Branch:<span>*</span>&nbsp;<input type="text" name="branch" required><br><br>
+          Semester: <span>*</span> &nbsp; <input type="number" name="sem" required><br><br>
+    </section>
+
+    <section>
+      <h3><b><u>Event details</u></b></h3>
+        <p>
+          Registering for sigle or group events:
+          <select name="sel1" required>
+            <option selected>----Choose one----</option>
+            <option value="1">Single</option>
+            <option value="2">Group</option>
+          </select><br><br>
+
+            <span>If Group event fill i the following details or else ignore:</span><br><br>
+            Group Strenght:&nbsp; <input type="number" name="grp"><br><br>
+            Group members name:&nbsp;<br>
+             <textarea rows="10" cols="15" name="gname" ></textarea><br><br>
+          </p>
+    </section>
+
+
+
+    <section>
+      <h3><b><u>Event Selection</u></b></h3>
+      <p>
+        <select name="sel2" required>
+          <option selected>----Choose one----</option>
+          <option value="1">Balloon Shoot(Single)</option>
+          <option value="2">Fish catch(Single)</option>
+          <option value="3">Pick and speak(Single)</option>
+          <option value="4">Stand up Comdey(Single)</option>
+          <option value="5">FreshFaceace(Single)</option>
+          <option value="6">Dance(Group)</option>
+          <option value="7">Drama(Group)</option>
+          <option value="8">Short Film(Group)</option>
+        </select><br><br>
+      </p>
+    </section>
+
+    <section align="center">
+        <button type="submit" name="b1">Submit</button>
+        <!--<input type="submit" value="  Submit" name="B1">&nbsp;&nbsp;-->
+
+    </section>
+
+</form>
+<style>
+
+</style>
+
+  <script type="text/javascript">
+      function validate()
+      {
+        var pwd=document.Reg.pass.value;
+        var id=document.Reg.uid.value;
+        var fname=document.Reg.sname.value;
+        var phno=document.Reg.phone.value;
+        var ba=document.Reg.branch.value;
+        var ch1=document.Reg.sel1.value;
+        var ch2=document.Reg.sel2.value;
+        var gs=document.Reg.grp.value;
+        var gn=document.Reg.gname.value;
+
+        var regularExpression = /^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,20}$/;
+        var regularExpression2= /^(?=.*[0-9]{4,})(?=.*[a-zA-Z]{3,})(?=.*[0-9]{4,})[0-9a-zA-Z]{11,}$/;
+
+        //UID
+        if (!regularExpression2.test(id))
+        {
+            alert("enter in 20171CSE0096 format only")
+            document.Reg.uid.value="";
+            return false;
+     	}
+
+
+
+        //Password
+        if (!regularExpression.test(pwd))
+        {
+            alert("enter pwd  more than 6 characters with minimum 1 number")
+            document.Reg.pass.value="";
+            return false;
+     	}
+
+        //Name
+        for(i=0;i<fname.length;i++)
+  		  {
+            if(!((fname.charAt(i)>='a'&&fname.charAt(i)<='z')||(fname.charAt(i)>='A'&&fname.charAt(i)<='Z')))
+  		  {
+                alert("enter alphabets only in name field");
+  	            document.Reg.sname.value="";
+
+  			        return false;
+  	      }
+  		  }
+
+
+        //Phone
+        if(phno.length>10||phno.length<10)
+        {
+           alert("invalid phone number");
+           document.Reg.phone.value="";
+           return false;
+        }
+        else
+        {
+           for(i=0;i<phno.length;i++)
+    	     {
+              if(!(phno.charAt(i)>='0'&& phno.charAt(i)<='9'))
+              {
+                 alert("enter   only numbers in phone field");
+                 document.Reg.phone.value="";
+                 return false;
+
+    	         }
+    	     }
+         }
+
+         //branch
+         if(ba.length>3)
+         {
+           alert("Enter only 3 characters Ex:CSE for computers");
+           document.Reg.branch.value="";
+           return false;
+         }
+         if(ba.length<=3)
+         {
+           for(i=0;i<ba.length;i++)
+     		  {
+               if(!((ba.charAt(i)>='a'&&ba.charAt(i)<='z')||(ba.charAt(i)>='A'&&ba.charAt(i)<='Z')))
+     		  {
+                   alert("enter alphabets only in branch field field");
+     	            document.Reg.branch.value="";
+     			        return false;
+     	      }
+     		  }
+
+         }
+
+         //events
+         if(ch1== "----Choose one----")
+         {
+           alert("Either single or groupevents");
+           return false;
+         }
+         //group events
+         if(ch1=="2")
+         {
+           if(gs=="")
+           {
+             alert("Enter Group Strength");
+             return false;
+           }
+
+           if(gn=="")
+           {
+             alert("Enter Group members name");
+             return false;
+
+           }
+         }
+         //events
+         if(ch2== "----Choose one----")
+         {
+           alert("choose an event");
+           return false;
+         }
+
+         //selecting the appropriate event
+         if(ch1=="1")
+         {
+           if(!(ch2=="1"||ch2=="2"||ch2=="3"||ch2=="4"||ch2=="5"))
+           {
+             alert("select only single event");
+             return false;
+           }
+         }
+         if(ch1=="2")
+         {
+           if(!(ch2=="6"||ch2=="7"||ch2=="8"))
+           {
+             alert("select only Group event");
+             return false;
+           }
+         }
+
+         //Successfully Validated
+        alert("Successfully Registered!");
+        return true;
+      }
+      </script>
+
+  </body>
+</html>

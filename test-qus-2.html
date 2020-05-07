@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> First</title>
+  </head>
+  <body onload="largest()">
+    <script>
+      function largest()
+      {
+          var num1=0,num2=0,num3=0,large=0;
+          num1=Number(prompt("Enter the first number."));
+          num2=Number(prompt("Enter the second number."));
+          num3=Number(prompt("Enter the third number."));
+          if(num1>num2)
+          {
+            if(num1>num3)
+            {
+              large=num1;
+              document.write("The largest of "+num1+" and "+num2+" and "+num3+" is: "+large);
+            }
+            else
+            {
+              large=num3;
+              document.write("The largest of "+num1+" and "+num2+" and "+num3+" is: "+large);
+            }
+          }
+          else
+          {
+            if(num2>num3)
+            {
+              large=num2;
+              document.write("The largest of "+num1+" and "+num2+" and "+num3+" is: "+large);
+            }
+            else
+            {
+              large=num3;
+              document.write("The largest of "+num1+" and "+num2+" and "+num3+" is: "+large);
+            }
+
+          }
+
+      }
+    </script>
+  </body>
+</html>
